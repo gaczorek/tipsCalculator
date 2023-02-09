@@ -1,18 +1,28 @@
-let tip;
-let bill = prompt("what's you bill?");
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
 calcTip = (x) => {
   x >= 50 && x <= 300 ? (tip = x * 0.15) : (tip = x * 0.2);
   return tip;
 };
-calcTip(bill);
 
-console.log(`You should leave ${tip}$ tip`);
+for (i = 0; i < bills.length; i++) {
+  tips.push(calcTip(bills[i]));
+  totals.push(bills[i] + tips[i]);
+}
+console.log(bills, tips, totals);
 
-const bills = [125, 555, 44];
-const tips = bills.map(calcTip);
+let average
 
-console.log(tips);
+const calcAverage = (arr) => {
+  let sum = 0;
+  for (let x = 0; x < arr.length; x++) {
+    sum += arr[x];
+  }
+  average = sum / arr.length
+};
+calcAverage(bills)
+console.log(`the average of array is ${average}`)
 
-const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 
-console.log(total);
